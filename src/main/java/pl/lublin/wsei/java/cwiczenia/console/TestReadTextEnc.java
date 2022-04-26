@@ -14,11 +14,14 @@ public class TestReadTextEnc {
 
         try{
             in = new BufferedReader(new FileReader("dzieweczki.txt", Charset.forName("windows-1250")));
-            out = new BufferedWriter(new FileWriter("dzieweczki_java.txt"));
-            int c;
+            //out = new BufferedWriter(new FileWriter("dzieweczki_java.txt"));
+            String line;
 
-            while ((c = in.read()) != -1){
-                out.write(c);
+            PrintStream out2 = new PrintStream(new FileOutputStream("dzieweczki_java.txt"));
+            while ((line = in.readLine()) != null){
+                //out.write(line);
+                //out.newLine();
+                out2.println(line);
             }
         }
         catch (IOException e){
