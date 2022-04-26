@@ -1,22 +1,23 @@
 package pl.lublin.wsei.java.cwiczenia.console;
 
 import java.io.*;
-import java.net.URL;
+import java.nio.charset.Charset;
 
-public class CopyFromURL{
-    public static void main(String[] args) throws IOException {
-        BufferedInputStream in = null;
-        BufferedOutputStream out = null;
+public class TestCharacterCopyFlawed {
+    public static void main(String[] args) throws IOException{
+        BufferedReader in = null;
+        BufferedWriter out = null;
+
+        System.out.println("Domyślne kodowanie:" + Charset.defaultCharset().displayName());
 
         long startTime = System.nanoTime();
-        URL url = new URL("https://filesamples.com/samples/image/tiff/sample_1920%C3%971280.tiff");
 
         try{
-            in = new BufferedInputStream(url.openStream());
-            out = new BufferedOutputStream(new FileOutputStream("img_copy.tiff"));
+            in = new BufferedReader(new FileReader("dzieweczki.txt"));
+            out = new BufferedWriter(new FileWriter("dzieweczki_java.txt"));
             int c;
 
-            while ((c = in.read()) != 1){
+            while ((c = in.read()) != -1){
                 out.write(c);
             }
         }
@@ -39,9 +40,13 @@ public class CopyFromURL{
         System.out.println("Czas wykonania w nanosekundach = " + timeElapsed);
         System.out.println("Czas wykonania w milisekundach = " + timeElapsed / 1000000);
 
-        //Podejscie 4:
-        //Czas wykonania w nanosekundach = 854806300
-        //Czas wykonania w milisekundach = 854
+        //Podejscie 5:
+        //Czas wykonania w nanosekundach = 225818200
+        //Czas wykonania w milisekundach = 225
+
+        //Domyślne kodowanie:UTF-8
+        //Czas wykonania w nanosekundach = 2237500
+        //Czas wykonania w milisekundach = 2
 
     }
 }
