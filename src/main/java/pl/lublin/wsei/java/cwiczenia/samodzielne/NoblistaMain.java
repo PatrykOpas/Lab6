@@ -1,15 +1,14 @@
 package pl.lublin.wsei.java.cwiczenia.samodzielne;
 import java.io.*;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 
-public class Main {
-    public static void main(String[] args) throws IOException {
+public class NoblistaMain {
+    public ArrayList<Noblista> noblista = new ArrayList<>();
+    public void LoadFile(String fileDict) throws IOException {
+        noblista.clear();
         BufferedReader in = null;
-        ArrayList<Noblista> noblista = new ArrayList<>();
-
         try{
-            in = new BufferedReader(new FileReader("nobel_prize_by_winner.csv"));
+            in = new BufferedReader(new FileReader(fileDict));
             String line;
             boolean firstLoop = true;
             while ((line = in.readLine()) != null){
