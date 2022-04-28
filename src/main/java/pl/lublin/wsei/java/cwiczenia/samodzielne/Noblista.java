@@ -1,16 +1,74 @@
 package pl.lublin.wsei.java.cwiczenia.samodzielne;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 import java.util.ArrayList;
 
 public class Noblista {
-    String Imie, Nazwisko, Rok, Kategoria, Uzasadnienie, Kraj, DataRow;
+    private StringProperty Imie, Nazwisko, Rok, Kategoria, Uzasadnienie, Kraj;
+    String DataRow;
 
     public Noblista(String datarow){
         DataRow = datarow;
+        Imie = new SimpleStringProperty("");
+        Nazwisko = new SimpleStringProperty("");
+        Rok = new SimpleStringProperty("");
+        Kategoria = new SimpleStringProperty("");
+        Uzasadnienie = new SimpleStringProperty("");
+        Kraj = new SimpleStringProperty("");
         Split();
     }
 
-    public String getName(){
-        return (this.Imie + " " +this.Nazwisko);
+    public String getImie(){
+        return this.Imie.get();
+    }
+
+    public String getNazwisko(){
+        return this.Nazwisko.get();
+    }
+
+    public String getRok(){
+        return this.Rok.get();
+    }
+
+    public String getKategoria(){
+        return this.Kategoria.get();
+    }
+
+    public String getUzasadnienie(){
+        return this.Uzasadnienie.get();
+    }
+
+    public String getKraj(){
+        return this.Kraj.get();
+    }
+
+    public void setImie(String name){
+        this.Imie.set(name);
+    }
+
+    public void setNazwisko(String surname){
+        this.Nazwisko.set(surname);
+    }
+
+    public void setRok(String year){
+        this.Rok.set(year);
+    }
+
+    public void setKategoria(String category){
+        this.Kategoria.set(category);
+    }
+
+    public void setUzasadnienie(String motivation){
+        this.Uzasadnienie.set(motivation);
+    }
+
+    public void setKraj(String country){
+        this.Kraj.set(country);
+    }
+
+    public String getDataRow(){
+        return this.DataRow;
     }
 
     ArrayList<String> ConvertData(String[] textToArray){
@@ -49,22 +107,22 @@ public class Noblista {
         for (int i = 0; i < columns.size(); i++){
             switch (i){
                 case 1:
-                    this.Imie = columns.get(i).replace("\"","");
+                    this.setImie(columns.get(i).replace("\"",""));
                     break;
                 case 2:
-                    this.Nazwisko = columns.get(i).replace("\"","");
+                    this.setNazwisko(columns.get(i).replace("\"",""));
                     break;
                 case 12:
-                    this.Rok = columns.get(i).replace("\"","");
+                    this.setRok(columns.get(i).replace("\"",""));
                     break;
                 case 13:
-                    this.Kategoria = columns.get(i).replace("\"","");
+                    this.setKategoria(columns.get(i).replace("\"",""));
                     break;
                 case 16:
-                    this.Uzasadnienie = columns.get(i).replace("\"","");
+                    this.setUzasadnienie(columns.get(i).replace("\"",""));
                     break;
                 case 19:
-                    this.Kraj = columns.get(i).replace("\"","");
+                    this.setKraj(columns.get(i).replace("\"",""));
                     break;
             }
 

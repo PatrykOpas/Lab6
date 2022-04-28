@@ -8,7 +8,7 @@
    <children>
       <Pane layoutY="50.0" prefHeight="551.0" prefWidth="800.0" style="-fx-background-color: #fafafa;">
          <children>
-            <TableView layoutX="10.0" layoutY="11.0" prefHeight="530.0" prefWidth="780.0">
+            <TableView fx:id="tableNoblista" layoutX="10.0" layoutY="11.0" prefHeight="530.0" prefWidth="780.0">
               <columns>
                 <TableColumn fx:id="colName" editable="false" prefWidth="130.0" text="Imię" />
                 <TableColumn fx:id="colSurname" editable="false" prefWidth="130.0" text="Nazwisko" />
